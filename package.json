@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/anna-flytis/tinyapp/issues"
   },
-  "homepage": "https://github.com/anna-flytis/tinyapp#readme"
+  "homepage": "https://github.com/anna-flytis/tinyapp#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }
