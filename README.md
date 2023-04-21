@@ -4,11 +4,11 @@ TinyApp is a full stack web application built with Node and Express that allows 
 
 ## Final Product
 
-!["Register page](https://github.com/anna-flytis/tinyapp/master/docs/register.png)
-!["Login Page"](https://github.com/anna-flytis/tinyapp/master/docs/log-in.png)
-!["Created short Url"](https://github.com/anna-flytis/tinyapp/master/docs/created-tinyUrl.png)
-!["Page with all created Urls"](https://github.com/anna-flytis/tinyapp/master/docs/page-myUrls.png)
-!["Page after deleting Url"](https://github.com/anna-flytis/tinyapp/master/docs/deleted-url.png)
+!["Register page](https://github.com/anna-flytis/tinyapp/tree/main/docs/register.png)
+!["Login Page"](https://github.com/anna-flytis/tinyapp/tree/main/docs/log-in.png)
+!["Created short Url"](https://github.com/anna-flytis/tinyapp/tree/main/docs/created-tinyUrl.png)
+!["Page with all created Urls"](https://github.com/anna-flytis/tinyapp/tree/main/docs/page-myUrls.png)
+!["Page after deleting Url"](https://github.com/anna-flytis/tinyapp/tree/main/docs/deleted-url.png)
 
 ## Dependencies
 
