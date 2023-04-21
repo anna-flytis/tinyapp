@@ -6,11 +6,11 @@ This version was made by Catherine Dawe during a bootcamp at Lighthouse Labs. Sh
 
 ## Final Product
 
-!["Register page](https://github.com/anna-flytis/tinyapp/blob/master/docs/register.png)
+!["Register page"](https://github.com/anna-flytis/tinyapp/blob/master/docs/register.png)
 !["Login Page"](https://github.com/anna-flytis/tinyapp/blob/master/docs/log-in.png)
-!["Created short Url"](https://github.com/anna-flytis/tinyapp/blob/master/docs/created-tinyUrl.png.png)
-!["Page with all created Urls"](https://github.com/anna-flytis/tinyapp/blob/master/docs/page-myUrls.png.png)
-!["Page after deleting Url"](https://github.com/anna-flytis/tinyapp/blob/master/docs/deleted-url.png.png)
+!["Created short Url"](https://github.com/anna-flytis/tinyapp/blob/master/docs/created-tinyUrl.png)
+!["Page with all created Urls"](https://github.com/anna-flytis/tinyapp/blob/master/docs/page-myUrls.png)
+!["Page after deleting Url"](https://github.com/anna-flytis/tinyapp/blob/master/docs/deleted-url.png)
 
 ## Dependencies
 
