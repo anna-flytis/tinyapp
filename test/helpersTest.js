@@ -1,5 +1,5 @@
 const { assert } = require('chai');
-const { fetchUserInfo } = require('../helperFunctions');
+const { fetchUserInfo } = require('../helper');
 
 //fetchUserInfo returns all user info based on email address
 
