@@ -40,13 +40,19 @@ const users = {
 };
 
 //GET
+app.get('/', (req, res) => {
+  res.redirect('url_login');
+});
 
-//login form
-app.get("/url_login", (req, res) => {
-  const templateVars = {
-    user: users[req.session["userID"]]
-  };
-  res.render("url_login", templateVars);
+//login form check if log in exists
+app.get('/url_login', (req, res) => {
+  const userID = req.session.user_id;
+  if (!userID) {
+    const templateVars = {user: null};
+    res.render('url_login', templateVars);
+    return;
+  }
+  res.redirect('/urls')
 });
 
 //register form
@@ -54,7 +60,7 @@ app.get("/register", (req, res) => {
   const templateVars = {
     user: users[req.session["userID"]]
   };
-  res.render("urls_register", templateVars);
+  res.render("register", templateVars);
 });
 
 //main page
@@ -87,9 +93,9 @@ app.get("/urls/new", (req, res) => {
 //edit / show tiny url
 app.get("/urls/:shortURL", (req, res) => {
   if (!req.session["userID"]) {
-    res.status(400).send("400 error ! Please Login or Register");
+    res.status(400).send("Error 400: Please Login or Register");
   } else if (!urlDatabase[req.params.shortURL]) {
-    res.status(404).send("404 not found! This URL doesn't exist");
+    res.status(404).send("Error 404: Not found! This URL doesn't exist!");
   } else if (urlDatabase[req.params.shortURL].userID === req.session["userID"]) {
     const templateVars = {
       shortURL: req.params.shortURL,
@@ -98,9 +104,9 @@ app.get("/urls/:shortURL", (req, res) => {
     };
     res.render("urls_show", templateVars);
   } else if (urlDatabase[req.params.shortURL].userID !== req.session["userID"]) {
-    res.status(403).send("403 error ! This is not your URL");
+    res.status(403).send("Error 403: This is not your URL");
   } else {
-    res.status(400).send("400 error ! Please Login to your account!");
+    res.status(400).send("Error 400: Please Login to your account!");
   }
 });
 
@@ -120,13 +126,13 @@ app.post("/register", (req, res) => {
 
   const userEmail = findEmail(email, users);
   if (userObj.email === "" || userObj.password === "") {
-    res.status(400).send("400 error ! Please fill all fields!");
+    res.status(400).send("Error 400: Please fill all fields!");
   } else if (!userEmail) {
     users[newUserID] = userObj;
     req.session["userID"] = newUserID;
     res.redirect("/urls");
   } else {
-    res.status(400).send("400 error ! Account already exists!");
+    res.status(400).send("Error 400: Account already exists!");
   }
 });
 
@@ -138,7 +144,7 @@ app.post("/urls/:id", (req, res) => {
     urlDatabase[req.params.id].longURL = longURL;
     res.redirect('/urls');
   } else {
-    res.status(403).send("Not permitted");
+    res.status(403).send("Error 403: Not permitted");
   }
 });
 
@@ -158,7 +164,7 @@ app.post("/urls/:shortURL/delete", (req, res) => {
     delete urlDatabase[req.params.shortURL];
     res.redirect("/urls");
   } else {
-    res.status(403).send("Not permitted!");
+    res.status(403).send("Error 403: Not permitted!");
   }
 });
 
@@ -175,18 +181,20 @@ app.post("/url_login", (req, res) => {
       req.session["userID"] = userID;
       res.redirect("/urls");
     } else {
-      res.status(403).send("403 Wrong Password");
+      res.status(403).send("Error 403: Wrong Password");
     }
   } else {
-    res.status(403).send("403 Please Register");
+    res.status(403).send("Error 403: Please Register");
   }
 });
 
 //logout
 app.post("/logout", (req, res) => {
-  req.session["userID"] = null;
-  res.redirect("/urls");
-});
+    //req.session["userID"] = null;
+    res.clearCookie('session');
+    res.clearCookie('session.sig');
+    res.redirect('/urls'); 
+  });
 
 
 app.listen(PORT, () => {
